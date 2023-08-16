@@ -101,7 +101,7 @@ public class MockChecker extends CordovaPlugin {
                                 if (requestedPermissions[i].equals("android.permission.ACCESS_MOCK_LOCATION") && !applicationInfo.packageName.equals(context.getPackageName())) {
                                     JSONObject app = new JSONObject();
                                     try {
-                                        app.put("package", applicationInfo.packageName);
+                                        app.put("packageName", applicationInfo.packageName);
                                         app.put("appName", name);
                                     } catch(JSONException e) {}
                                     apps.add(app);
