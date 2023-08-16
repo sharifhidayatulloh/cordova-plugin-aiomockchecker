@@ -1,0 +1,32 @@
+{
+  "name": "cordova-plugin-aiomockchecker",
+  "version": "1.0.3",
+  "description": "Cordova Gps Spoofing Checker Plugin",
+  "cordova": {
+    "id": "cordova-plugin-aiomockchecker",
+    "platforms": "android"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sharifhidayatulloh/cordova-plugin-aiomockchecker.git"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "mock",
+    "location",
+    "checker",
+    "mock-location",
+    "aio"
+  ],
+  "author": "sherifhidayatulloh",
+  "license": "Apache-2.0",
+  "engines": {
+    "cordovaDependencies": {
+      "1.0.0": {
+        "cordova-android": ">7.0.0",
+        "cordova-ios": ">4.5.0"
+      }
+    }
+  }
+}

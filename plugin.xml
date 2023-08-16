@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="cordova-plugin-aiomockchecker"
+        version="1.0.3">
+
+  <name>ApplaudMockGpsChecker</name>
+  <description>Detect GPS Spoofing in Android Platform.</description>
+
+  <js-module src="www/mockgps.js" name="MockChecker">
+	  <clobbers target="mockchecker" />
+  </js-module>
+
+  <platform name="android">
+    <config-file target="res/xml/config.xml" parent="/*">
+		<feature name="MockChecker">
+			<param name="android-package" value="id.co.aio.cordova.MockChecker"/>
+		</feature>
+    </config-file>
+
+    <framework src="com.google.android.gms:play-services-location:15.0.1" />
+
+  	<config-file target="AndroidManifest.xml" parent="/*">
+      <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+      <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+      <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"/>
+  	</config-file>
+
+    <source-file src="src/android/MockChecker.java" target-dir="src/id/co/aio/cordova"/>
+
+  </platform>
+
+</plugin>
