@@ -1,4 +1,4 @@
-# cordova-plugin-applaudmockchecker
+# cordova-plugin-aiomockchecker
 
 This is a cordova plugin to avoid mock locations
 
@@ -11,7 +11,7 @@ This plugin get mock location in Android api <= 22 AND api > 22
 ## Installation
 
 ```bash
-cordova plugin add cordova-plugin-applaudmockchecker
+cordova plugin add cordova-plugin-aiomockchecker
 ```
 
 ## Usage in javascript
