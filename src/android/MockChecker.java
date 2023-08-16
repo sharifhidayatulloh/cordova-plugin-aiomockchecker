@@ -33,6 +33,8 @@ public class MockChecker extends CordovaPlugin {
         if (action.equals("check")) {
             objGPS = new JSONObject();
             objGPS.put("osVersion",android.os.Build.VERSION.SDK_INT);
+            Boolean isDevModeEnabled = (Boolean)isDevModeEnabled(mContext.cordova.getActivity());
+            objGPS.put("isDevMode", isDevModeEnabled);
             if (android.os.Build.VERSION.SDK_INT <= 29) {
                 if (Secure.getString(this.cordova.getActivity().getContentResolver(), Secure.ALLOW_MOCK_LOCATION).equals("0")) {
                     objGPS.put("isMock", false);
@@ -45,9 +47,7 @@ public class MockChecker extends CordovaPlugin {
             } else {
                 HashMap<String, Object> check = isMockPermissionGranted(mContext.cordova.getActivity());
                 List<JSONArray> apps = (List)check.get("suspiciousApps");
-                Boolean isDevModeEnabled = (Boolean)isDevModeEnabled(mContext.cordova.getActivity());
                 objGPS.put("isMock", isDevModeEnabled && apps.size() > 0);
-                objGPS.put("isDevMode", isDevModeEnabled);
                 if (objGPS.getBoolean("isMock")) {
                     objGPS.put("title", "GPS spoofing detected");
                     objGPS.put("messages", "You have one or more GPS spoofing apps installed on your device.");
@@ -118,10 +118,7 @@ public class MockChecker extends CordovaPlugin {
     }
 
     public static boolean isDevModeEnabled(Context context) {
-        if (Secure.getString(
-                context.getContentResolver(),
-                Global.DEVELOPMENT_SETTINGS_ENABLED)
-                .equals("0")) {
+        if (Secure.getString(context.getContentResolver(), Global.DEVELOPMENT_SETTINGS_ENABLED).equals("0")) {
             return false;
         } else {
             return true;
